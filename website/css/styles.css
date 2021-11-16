@@ -1,0 +1,79 @@
+/* Defines colours*/
+:root {
+    --white: #FFFFFF;
+    --black: #010101;
+    --purple: #47398e;
+    --darkBlue: #485da5;
+    --lightBlue: #568ab4;
+    --green: #a1baae;
+    --orange: #de5e5b;
+}
+
+html {
+    
+    scroll-behavior: smooth;
+}
+  
+/* Text and paragraph styles */
+h2 {
+    font-family: 'Futura','Trebuchet MS','Arial',sans-serif; 
+    font-weight: normal;
+    color: var(--white);
+    font-size: 40px;
+    background-color: var(--darkBlue);
+    
+}
+
+h3 {
+    font-family: 'Futura','Trebuchet MS','Arial',sans-serif; 
+    font-weight: normal;
+    color: var(--black); 
+    background-color: var(--white); 
+    font-size: 32px;
+}
+
+p {
+    font-family: 'Futura','Trebuchet MS','Arial',sans-serif; 
+    font-weight: thin;
+    color: var(--black);
+    background-color: var(--white);
+    font-size: 18px;
+}
+
+ /* Class styles */
+ .title {
+    font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+    color: var(--black);
+    font-size: 130px;
+    margin-top: -26px;
+    margin-left: -6px;
+    margin-bottom: -40px;
+ }
+
+ .header {
+    margin-bottom: 64px ;
+ }
+ .content {
+    
+}
+  
+.row {
+    height:400px;
+    margin-bottom:75px;
+   
+}
+ .columnLeft {
+     width:500px; 
+     text-align: left; 
+     float: left; 
+     display: table-cell;
+
+   
+ }
+ .columnRight{
+     width:500px;
+     text-align: left; 
+     float: right; 
+     display: table-cell;
+    
+ }
