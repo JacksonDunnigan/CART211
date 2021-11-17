@@ -67,6 +67,7 @@ p {
      text-align: left; 
      float: left; 
      display: table-cell;
+     padding-left: 100px;
 
    
  }
@@ -75,5 +76,6 @@ p {
      text-align: left; 
      float: right; 
      display: table-cell;
+     padding-right: 100px;
     
  }
