@@ -18,9 +18,9 @@ html {
 h2 {
     font-family: 'Futura','Trebuchet MS','Arial',sans-serif; 
     font-weight: normal;
-    color: var(--white);
+    color: var(--black);
     font-size: 40px;
-    background-color: var(--darkBlue);
+    
     
 }
 
@@ -28,7 +28,7 @@ h3 {
     font-family: 'Futura','Trebuchet MS','Arial',sans-serif; 
     font-weight: normal;
     color: var(--black); 
-    background-color: var(--white); 
+    
     font-size: 32px;
 }
 
@@ -36,8 +36,9 @@ p {
     font-family: 'Futura','Trebuchet MS','Arial',sans-serif; 
     font-weight: thin;
     color: var(--black);
-    background-color: var(--white);
+    
     font-size: 18px;
+    
 }
 
  /* Class styles */
@@ -79,3 +80,51 @@ p {
      padding-right: 100px;
     
  }
+/* Shapes */
+ .rectangle {
+     width: 300px;
+     height: 10px;
+     background-color: var(--orange); 
+     margin-left: 400px; 
+ } 
+.rectangle2{
+    width: 10px;
+    height: 220px;
+    background-color: var(--orange); 
+    margin-left: 1250px;
+    position: absolute;
+    top: 330px;   
+
+}
+.rectangle3{
+    width: 10px;
+    height: 150px;
+    background-color: var(--orange); 
+    margin-left: 1220px;
+    position: absolute;
+    top: 280px;
+
+}
+.rectangle4{
+    width: 300px;
+    height: 10px;
+    background-color: var(--orange); 
+    margin-left: 200px;
+    position: absolute;
+    top: 2220px;
+
+}
+.BLUEbox{
+    width: 400px;
+    height: 300px;
+    background-color: var(--darkBlue);
+    /*mix-blend-mode: ;*/
+    position: absolute;
+    right: 115px;
+    bottom: 250px; 
+    z-index: -1;
+    
+
+
+
+}
