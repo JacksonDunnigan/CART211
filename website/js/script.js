@@ -1,6 +1,11 @@
 
 "use strict";
 
+// Variables
+let shapes = [];
+let clicked = false;
+
+
 // 3d shape class
 class Shape {
   constructor(x, y, size, type) {
@@ -13,12 +18,23 @@ class Shape {
   }
 
   move () {
+
+    // Border collision
     if (this.x - this.size + this.xVelocity * 2 <= - (displayWidth * .5) || this.x + this.size + this.xVelocity * 2 >= displayWidth * .5) {
       this.xVelocity *= -1;
     }
     if (this.y - this.size + this.yVelocity * 2 <= - (displayHeight * .5) || this.y + this.size + this.yVelocity * 2  >= displayHeight * .5) {
       this.yVelocity *= -1;
     }
+
+    // Mouse collision
+    if (dist(mouseX - displayWidth / 2, mouseY - displayHeight / 2, this.x, this.y) <= this.size && clicked == true) {
+      
+      this.xVelocity = (mouseX - displayWidth / 2 - (this.x + this.size / 2)) / abs(mouseX - displayWidth / 2 - (this.x + this.size / 2));
+      this.yVelocity = (mouseY - displayHeight / 2- (this.y + this.size / 2)) / abs(mouseY - displayHeight / 2 - (this.y + this.size / 2));
+    }
+
+    // Moves the x and y
     this.x += this.xVelocity;
     this.y += this.yVelocity;
   }
@@ -54,7 +70,7 @@ class Shape {
         rotateZ(frameCount * 0.01);
         rotateX(frameCount * 0.01);
         rotateY(frameCount * 0.01);
-        cone(this.size, this.size);
+        cone(this.size, this.size, 4);
         pop();
         break;
 
@@ -65,7 +81,7 @@ class Shape {
         rotateZ(frameCount * 0.01);
         rotateX(frameCount * 0.01);
         rotateY(frameCount * 0.01);
-        torus(this.size, this.size/4);
+        cone(this.size, this.size, 5);
         pop();
         break;
 
@@ -76,14 +92,44 @@ class Shape {
         rotateZ(frameCount * 0.01);
         rotateX(frameCount * 0.01);
         rotateY(frameCount * 0.01);
+        torus(this.size, this.size/3, 15, 15);
+        pop();
+        break;
+
+      case 5:
+
+        push();
+        translate(this.x, this.y, 0);
+        rotateZ(frameCount * 0.01);
+        rotateX(frameCount * 0.01);
+        rotateY(frameCount * 0.01);
         sphere(this.size);
+        pop();
+        break;
+
+      case 6:
+
+        push();
+        translate(this.x, this.y, 0);
+        rotateZ(frameCount * 0.01);
+        rotateX(frameCount * 0.01);
+        rotateY(frameCount * 0.01);
+        cylinder(this.size, this.size, 8, 3);
         pop();
         break;
     }
   }
 }
 
-let shapes = [];
+
+// Detects mouse input
+function mousePressed() {
+  clicked = true;
+}
+
+function mouseReleased() {
+  clicked = false;
+}
 
 // Sets up the canvas
 function setup() {
@@ -93,7 +139,7 @@ function setup() {
   canvas.style('z-index', '-3');
   canvas.style('position', 'fixed')
   for (var i = 0; i < 6; i++) {
-    shapes.push(new Shape(random(-displayWidth/2, displayWidth/2), random(-displayHeight/2, displayHeight/2), random(75,100), floor(random(5))));
+    shapes.push(new Shape(random(-displayWidth/2, displayWidth/2), random(-displayHeight/2, displayHeight/2), random(75,100), floor(random(7))));
   }
 }
 
@@ -101,18 +147,8 @@ function setup() {
 function draw() {
   background(255);
 
-  // Moves the shapes
-  // push();
-  // fill(255, 204, 0);
-  // stroke(5);
-  // rect(-displayWidth*.45, -displayHeight*.45, displayWidth*.9, displayHeight*9);
-  // pop();
-
   for (var i = 0; i < shapes.length; i++) {
     shapes[i].move();
-  }
-  for (var i = 0; i < shapes.length; i++) {
-  
     shapes[i].display();
   }
 }
