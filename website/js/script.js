@@ -3,8 +3,8 @@
 
 // Variables
 let shapes = [];
-let clicked = false;
-
+let shapeAmount = 12;
+let holding = false;
 
 // 3d shape class
 class Shape {
@@ -15,6 +15,8 @@ class Shape {
     this.type = type;
     this.xVelocity = random(-1, 1);
     this.yVelocity = random(-1, 1);
+    this.rotateSpeed = random(0.001, 0.005);
+    this.holding = false;
   }
 
   move () {
@@ -27,11 +29,9 @@ class Shape {
       this.yVelocity *= -1;
     }
 
-    // Mouse collision
-    if (dist(mouseX - displayWidth / 2, mouseY - displayHeight / 2, this.x, this.y) <= this.size && clicked == true) {
-      
-      this.xVelocity = (mouseX - displayWidth / 2 - (this.x + this.size / 2)) / abs(mouseX - displayWidth / 2 - (this.x + this.size / 2));
-      this.yVelocity = (mouseY - displayHeight / 2- (this.y + this.size / 2)) / abs(mouseY - displayHeight / 2 - (this.y + this.size / 2));
+    if (this.holding) {
+      this.x = mouseX - (displayWidth / 2);
+      this.y = mouseY - (displayHeight / 2);
     }
 
     // Moves the x and y
@@ -39,15 +39,23 @@ class Shape {
     this.y += this.yVelocity;
   }
 
+  // Rotates the shape
+  rotation() {
+    rotateZ(frameCount * this.rotateSpeed);
+    rotateX(frameCount * this.rotateSpeed);
+    rotateY(frameCount * this.rotateSpeed);
+  }
+
   display() {
+    //noFill();
+    //normalMaterial();
+
     switch(this.type) {
       case 0:
 
         push();
         translate(this.x, this.y, 0);
-        rotateZ(frameCount * 0.01);
-        rotateX(frameCount * 0.01);
-        rotateY(frameCount * 0.01);
+        this.rotation();
         box(this.size, this.size, this.size);
         pop();
         break;
@@ -56,9 +64,7 @@ class Shape {
 
         push();
         translate(this.x, this.y, 0);
-        rotateZ(frameCount * 0.01);
-        rotateX(frameCount * 0.01);
-        rotateY(frameCount * 0.01);
+        this.rotation();
         cylinder(this.size, this.size);
         pop();
         break;
@@ -67,9 +73,7 @@ class Shape {
 
         push();
         translate(this.x, this.y, 0);
-        rotateZ(frameCount * 0.01);
-        rotateX(frameCount * 0.01);
-        rotateY(frameCount * 0.01);
+        this.rotation();
         cone(this.size, this.size, 4);
         pop();
         break;
@@ -78,9 +82,7 @@ class Shape {
 
         push();
         translate(this.x, this.y, 0);
-        rotateZ(frameCount * 0.01);
-        rotateX(frameCount * 0.01);
-        rotateY(frameCount * 0.01);
+        this.rotation();
         cone(this.size, this.size, 5);
         pop();
         break;
@@ -89,9 +91,7 @@ class Shape {
 
         push();
         translate(this.x, this.y, 0);
-        rotateZ(frameCount * 0.01);
-        rotateX(frameCount * 0.01);
-        rotateY(frameCount * 0.01);
+        this.rotation();
         torus(this.size, this.size/3, 15, 15);
         pop();
         break;
@@ -100,10 +100,8 @@ class Shape {
 
         push();
         translate(this.x, this.y, 0);
-        rotateZ(frameCount * 0.01);
-        rotateX(frameCount * 0.01);
-        rotateY(frameCount * 0.01);
-        sphere(this.size);
+        this.rotation();
+        sphere(this.size, 12, 12);
         pop();
         break;
 
@@ -111,10 +109,8 @@ class Shape {
 
         push();
         translate(this.x, this.y, 0);
-        rotateZ(frameCount * 0.01);
-        rotateX(frameCount * 0.01);
-        rotateY(frameCount * 0.01);
-        cylinder(this.size, this.size, 8, 3);
+        this.rotation();
+        cylinder(this.size/2, this.size, 5, 3);
         pop();
         break;
     }
@@ -124,11 +120,18 @@ class Shape {
 
 // Detects mouse input
 function mousePressed() {
-  clicked = true;
+   for (var i = 0; i < shapes.length; i++) {
+    if (dist(mouseX - displayWidth / 2, mouseY - displayHeight / 2, shapes[i].x, shapes[i].y) <= shapes[i].size ) {
+      shapes[i].holding = true;
+      break;
+    } 
+  }
 }
 
 function mouseReleased() {
-  clicked = false;
+  for (var i = 0; i < shapes.length; i++) {
+    shapes[i].holding = false;
+  }
 }
 
 // Sets up the canvas
@@ -138,7 +141,7 @@ function setup() {
   canvas.position(0,0);
   canvas.style('z-index', '-3');
   canvas.style('position', 'fixed')
-  for (var i = 0; i < 6; i++) {
+  for (var i = 0; i < shapeAmount; i++) {
     shapes.push(new Shape(random(-displayWidth/2, displayWidth/2), random(-displayHeight/2, displayHeight/2), random(75,100), floor(random(7))));
   }
 }
@@ -147,6 +150,9 @@ function setup() {
 function draw() {
   background(255);
 
+ 
+
+  // Draws the shapes
   for (var i = 0; i < shapes.length; i++) {
     shapes[i].move();
     shapes[i].display();
