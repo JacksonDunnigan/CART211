@@ -7,6 +7,13 @@
     --lightBlue: #568ab4;
     --green: #a1baae;
     --orange: #de5e5b;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 html {
@@ -39,6 +46,7 @@ p {
     background: -webkit-linear-gradient(180deg, white 0%,white 10%,white 80%,Black 50%);
     -webkit-background-clip: text, border; 
     color: transparent;
+    
 
     
     font-size: 18px;
@@ -89,9 +97,15 @@ p {
      width: 300px;
      height: 10px;
      background-color: var(--orange); 
+     position: absolute;
+     top: 280px;
      margin-left: 400px; 
  } 
-.rectangle2{
+
+ .script {
+    position: absolute;
+ }
+/* rectangle2{
     width: 10px;
     height: 220px;
     background-color: var(--orange); 
@@ -117,16 +131,35 @@ p {
     position: absolute;
     top: 2220px;
 
-}
+}. */
 .BLUEbox{
+    width: 400px;
+    height: 369px;
+    background-color: var(--darkBlue);
+    /*mix-blend-mode: ;*/
+    position: absolute;
+    right: 108px;
+    top: 390px;
+    z-index: -1;
+    
+    
+
+    
+
+
+
+}
+.BLUEbox2{
     width: 400px;
     height: 355px;
     background-color: var(--darkBlue);
     /*mix-blend-mode: ;*/
     position: absolute;
-    right: 108px;
-    bottom: 250px; 
+    left: 210px;
+    top: 860px;
     z-index: -1;
+    
+
     
 
 

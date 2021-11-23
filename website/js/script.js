@@ -5,6 +5,8 @@
 let shapes = [];
 let shapeAmount = 12;
 let holding = false;
+let canvasX = 0;
+let canvasY = 0;
 
 // 3d shape class
 class Shape {
@@ -62,10 +64,11 @@ class Shape {
 
       case 1:
 
+
         push();
         translate(this.x, this.y, 0);
         this.rotation();
-        cylinder(this.size, this.size);
+        cylinder(this.size*2/3, this.size/6);
         pop();
         break;
 
@@ -105,17 +108,10 @@ class Shape {
         pop();
         break;
 
-      case 6:
-
-        push();
-        translate(this.x, this.y, 0);
-        this.rotation();
-        cylinder(this.size/2, this.size, 5, 3);
-        pop();
-        break;
     }
   }
 }
+
 
 
 // Detects mouse input
@@ -142,7 +138,7 @@ function setup() {
   canvas.style('z-index', '-3');
   canvas.style('position', 'fixed')
   for (var i = 0; i < shapeAmount; i++) {
-    shapes.push(new Shape(random(-displayWidth/2, displayWidth/2), random(-displayHeight/2, displayHeight/2), random(75,100), floor(random(7))));
+    shapes.push(new Shape(random(-displayWidth/2, displayWidth/2), random(-displayHeight/2, displayHeight/2), random(75,100), floor(random(6))));
   }
 }
 
