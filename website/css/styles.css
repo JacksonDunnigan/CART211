@@ -133,13 +133,13 @@ p {
 
 }. */
 .BLUEbox{
-    width: 400px;
-    height: 369px;
+    width: 20.8vw;
+    height: 36vh;
     background-color: var(--darkBlue);
     /*mix-blend-mode: ;*/
     position: absolute;
     right: 108px;
-    top: 390px;
+    top: 375px;
     z-index: -1;
     
     
@@ -156,7 +156,7 @@ p {
     /*mix-blend-mode: ;*/
     position: absolute;
     left: 210px;
-    top: 860px;
+    top: 850px;
     z-index: -1;
     
 
