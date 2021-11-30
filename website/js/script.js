@@ -7,6 +7,7 @@ let shapeAmount = 12;
 let holding = false;
 let canvasX = 0;
 let canvasY = 0;
+let spriteCoin;
 
 // 3d shape class
 class Shape {
@@ -68,7 +69,16 @@ class Shape {
         push();
         translate(this.x, this.y, 0);
         this.rotation();
+
         cylinder(this.size*2/3, this.size/6);
+
+        //rotateZ(135);
+
+        //rotateY(180);
+        //rotateX(180);
+        //texture(spriteCoin);
+        //plane(spriteCoin.width/5, spriteCoin.height/5);
+
         pop();
         break;
 
@@ -113,6 +123,12 @@ class Shape {
 }
 
 
+// Pre load 
+function preload(){
+  spriteCoin = loadImage('images/coin.jpg');
+
+}
+
 
 // Detects mouse input
 function mousePressed() {
@@ -132,7 +148,7 @@ function mouseReleased() {
 
 // Sets up the canvas
 function setup() {
-
+  cursor(CROSS);
   canvas = createCanvas(displayWidth, displayHeight, WEBGL);
   canvas.position(0,0);
   canvas.style('z-index', '-3');
@@ -144,8 +160,8 @@ function setup() {
 
 // Draws everything to the screen
 function draw() {
-  background(255);
-
+  //background(255);
+  clear();
  
 
   // Draws the shapes

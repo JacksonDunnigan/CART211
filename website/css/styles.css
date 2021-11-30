@@ -1,5 +1,6 @@
 /* Defines colours*/
 :root {
+    cursor: "images/cursor.png", auto;
     --white: #FFFFFF;
     --black: #010101;
     --purple: #47398e;
@@ -27,7 +28,6 @@ h2 {
     font-weight: normal;
     color: var(--black);
     font-size: 40px;
-    
     
 }
 
@@ -132,24 +132,18 @@ p {
     top: 2220px;
 
 }. */
-.BLUEbox{
-    width: 20.8vw;
-    height: 36vh;
+.blueBox{
+    width: 400px;
+    height: 355px;
     background-color: var(--darkBlue);
     /*mix-blend-mode: ;*/
     position: absolute;
-    right: 108px;
-    top: 375px;
+    /* right: 108px;
+    top: 375px; */
     z-index: -1;
-    
-    
-
-    
-
-
-
 }
-.BLUEbox2{
+
+.BLUEbox{
     width: 400px;
     height: 355px;
     background-color: var(--darkBlue);
@@ -158,16 +152,18 @@ p {
     left: 210px;
     top: 850px;
     z-index: -1;
-    
-
-    
-
-
 
 }
 
 ::selection{
     background: var(--green);
 
+
+}
+.Images{
+    position: absolute;
+    z-index: -2;
+    
+   
 
 }
