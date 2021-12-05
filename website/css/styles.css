@@ -22,6 +22,15 @@ html {
     scroll-behavior: smooth;
 }
   
+footer {
+    /* text-align: left;*/
+    height: 150px;
+
+    padding-top: 5px;
+    padding-left: 25px;
+    background-color: var(--darkBlue);
+}
+
 /* Text and paragraph styles */
 h2 {
     font-family: 'Futura','Trebuchet MS','Arial',sans-serif; 
@@ -72,7 +81,8 @@ p {
   
 .row {
     height:400px;
-    margin-bottom:75px;
+
+    margin-top:200px;
    
 }
  .columnLeft {
@@ -92,7 +102,7 @@ p {
      padding-right: 100px;
     
  }
-/* Shapes */
+ 
  .rectangle {
      width: 300px;
      height: 10px;
@@ -105,56 +115,36 @@ p {
  .script {
     position: absolute;
  }
-/* rectangle2{
-    width: 10px;
-    height: 220px;
-    background-color: var(--orange); 
-    margin-left: 1250px;
-    position: absolute;
-    top: 330px;   
 
-}
-.rectangle3{
-    width: 10px;
-    height: 150px;
-    background-color: var(--orange); 
-    margin-left: 1220px;
-    position: absolute;
-    top: 280px;
-
-}
-.rectangle4{
-    width: 300px;
-    height: 10px;
-    background-color: var(--orange); 
-    margin-left: 200px;
-    position: absolute;
-    top: 2220px;
-
-}. */
 .blueBox{
     width: 400px;
     height: 355px;
     background-color: var(--darkBlue);
-    /*mix-blend-mode: ;*/
     position: absolute;
-    /* right: 108px;
-    top: 375px; */
     z-index: -1;
 }
+.StyleBox{
+    width: 200px;
+    height: 200px;
+    background-color: var(--darkBlue);
+    position: absolute;
+    z-index: -1;
+
+
+}
+
 .image{
     position: absolute;
     z-index: -4;
 }
+
 ::selection{
     background: var(--green);
-
-
 }
+
 .grid{
     position: absolute;
     z-index: -2;
-    
-   
-
 }
+
+  
