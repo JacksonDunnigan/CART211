@@ -59,6 +59,7 @@ class Shape {
         push();
         translate(this.x, this.y, 0);
         this.rotation();
+        texture(spriteCoin);
         box(this.size, this.size, this.size);
         pop();
         break;
